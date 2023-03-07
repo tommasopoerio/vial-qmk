@@ -55,32 +55,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, MO(_FN1),KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
-    /* FN1 Layout
+    /* GAMEMODE Layout
      *
      * ,-------------------------------------------------------------------------------------------------------------.
-     * | Esc  ||MyCmp |WbHom | Calc |MdSel ||MdPrv |MdNxt |MdPly |MdStp ||VolDn |VolUp |PrScr |ScrLk ||Pause ||Sleep |
+     * | Esc  ||  F1  |  F2  |  F3  |  F4  ||  F5  |  F6  |  F7  |  F8  ||  F9  | F10  | F11  | F12  || Home || Mute |
      * |=============================================================================================================|
-     * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |RGBTOD|RGBTOI| ________ ||RGBTOG|
+     * | ISO  |  1 ! |  2 @ |  3 # |  4 $ |  5 % |  6 ^ |  7 & |  8 * |  9 ( |  0 ) |  - _ |  = + |  Backspc || Del  |
      * |------+------+------+------+------+------+------+------+------+------+------+------+------+----------++------|
-     * |  ______ |RGBSAD|RGBVAI|RGBSAI| NKRO | ____ |YAHOO | ____ | ____ |OUTLK |Pause | ____ | ____ |       || Home |
+     * |   Tab   |  Q   |  W   |  E   |  R   |  T   |  Y   |  U   |  I   |  O   |  P   | [ }  | ] }  |       || PgUp |
      * |---------+------+------+------+------+------+------+------+------+------+------+------+------+       ++------|
-     * |  Capslock  |RGBHUD|RGBVAD|RGBHUI| ____|GMAIL |HTMAIL| ____ | ____ | ____ | ____ | ____ | ___ | ____ || End  |
+     * |  Capslock  |  A   |  S   |  D   |  F  |  G   |  H   |  J   |  K   |  L   | ; :  | ' "  | ISO| Enter || PgDn |
      * |------------+------+------+------+-----+------+------+------+------+------+------+------|----+========+------|
-     * |  ____ |QK_BOOT|RGBNIT| ____ | ____ | ____ | ____ |NumLk | ____ | ____ |DOTCOM| CAD  | ______ ||RGBMOD|| ____ |
+     * | LShift | ISO |  Z   |  X   |  C   |  V   |  B   |  N   |  M   | , <  | . >  | / ?  | RShift ||  Up  || End  |
      * |--------------+------+------+------+------+------+------+------+------+------+------+--+=====++------++======|
-     * |  ____  | WinKyLk |  ____  |               _____                  | ____ | ____ | ____ ||RGBSPD|RGBRMD|RGBSPI|
+     * |  Ctrl  |   TD(0)  |  LAlt  |               Space                 | RAlt |  Fn  | Ctrl || Left | Down | Rght |
      * `------------------------------------------------------------------------------------------------------------'
      */
 
 
-    [_FN1] = LAYOUT(
-        EE_CLR,  KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_VOLD, KC_VOLU, KC_PSCR, KC_SLCK, KC_PAUS,           KC_SLEP,
-        PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR,TG_ENGCAP,RGB_TOD,RGB_TOI, _______,           RGB_TOG,
-        _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, YAHOO,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,                     KC_HOME,
-        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______, _______, _______,           KC_END,
-        _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
-        _______, WINLOCK, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
+     [_GAMEMODE] = LAYOUT(
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  LEFTOFENC,        ENCFUNC,
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          BELOWENC,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                   KC_PGUP,
+        KC_CAPSLOCK, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_NUHS, KC_ENT,           KC_PGDN,
+        KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
+        KC_LCTL, TD(0), KC_LALT,                            KC_SPC,                             KC_RALT, _______,KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
+
+    
 
 
     /* _NUMPADMOUSE Layout
@@ -109,13 +111,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______,                            KC_PENT,                            _______, _______, KC_BTN3, KC_MS_L, KC_MS_D, KC_MS_R
     ),
 
-    [_MOUSEKEY] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   KC_WH_U,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_WH_D,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_BTN1, KC_MS_U, KC_BTN2,
-        _______, _______, _______,                            _______,                            _______, _______, KC_BTN3, KC_MS_L, KC_MS_D, KC_MS_R
+/* FN1 Layout
+     *
+     * ,-------------------------------------------------------------------------------------------------------------.
+     * | Esc  ||MyCmp |WbHom | Calc |MdSel ||MdPrv |MdNxt |MdPly |MdStp ||VolDn |VolUp |PrScr |ScrLk ||Pause ||Sleep |
+     * |=============================================================================================================|
+     * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |RGBTOD|RGBTOI| ________ ||RGBTOG|
+     * |------+------+------+------+------+------+------+------+------+------+------+------+------+----------++------|
+     * |  ______ |RGBSAD|RGBVAI|RGBSAI| NKRO | ____ |YAHOO | ____ | ____ |OUTLK |Pause | ____ | ____ |       || Home |
+     * |---------+------+------+------+------+------+------+------+------+------+------+------+------+       ++------|
+     * |  Capslock  |RGBHUD|RGBVAD|RGBHUI| ____|GMAIL |HTMAIL| ____ | ____ | ____ | ____ | ____ | ___ | ____ || End  |
+     * |------------+------+------+------+-----+------+------+------+------+------+------+------|----+========+------|
+     * |  ____ |QK_BOOT|RGBNIT| ____ | ____ | ____ | ____ |NumLk | ____ | ____ |DOTCOM| CAD  | ______ ||RGBMOD|| ____ |
+     * |--------------+------+------+------+------+------+------+------+------+------+------+--+=====++------++======|
+     * |  ____  | GameMode |  ____  |              _____                  | ____ | ____ | ____ ||RGBSPD|RGBRMD|RGBSPI|
+     * `------------------------------------------------------------------------------------------------------------'
+     */
+
+
+    [_FN1] = LAYOUT(
+        EE_CLR,  KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_VOLD, KC_VOLU, KC_PSCR, KC_SLCK, KC_PAUS,           KC_SLEP,
+        PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR,TG_ENGCAP,RGB_TOD,RGB_TOI, _______,           RGB_TOG,
+        _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, YAHOO,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,                     KC_HOME,
+        KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______, _______, _______,           KC_END,
+        _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
+        _______, TG(_GAMEMODE), _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
     #ifdef COLEMAK_LAYER_ENABLE
@@ -171,43 +191,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 #ifdef RGB_MATRIX_ENABLE
 
-// Game logic
-#ifdef GAME_ENABLE
-void init_ball(uint8_t i) {
-    i &= 1;
-    ball[i].on = true;
-    ball[i].up = false;
-    ball[i].y = 0;
-    ball[i].x = rand() % 16;
-
-    // Set initial ball state
-    if (ball[i].x < 8) {
-        ball[i].left = false;
-    } else {
-        ball[i].x -= 4;
-        ball[i].left = true;
-    }
-
-    // 1/4 chance of being an enemy ball after level 6
-    if (level_number > 3) {
-        ball[i].enemy = ((rand() % 4) == 0);
-    } else {
-        ball[i].enemy = false;
-    }
-}
-
-void hurt_paddle(void) {
-    if (paddle_lives > 0) {
-        --paddle_lives;
-    }
-    damage_timer = timer_read();
-    damage_count = 10;
-
-    // Reset board
-    init_ball(0);
-    ball[1].on = false;
-}
-#endif //GAME_ENABLE
 
 // Capslock, Scroll lock and Numlock indicator on Left side lights.
 void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
@@ -266,26 +249,6 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
     }
 
-    // Winkey disabled (gaming) mode RGB setup
-    if (keymap_config.no_gui) {
-        rgb_matrix_set_color(LED_LWIN, RGB_RED); //light up Winkey red when disabled
-        rgb_matrix_set_color(LED_W, RGB_CHARTREUSE); //light up gaming keys with WSAD higlighted
-        rgb_matrix_set_color(LED_S, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_A, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_D, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_Q, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_E, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_R, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_TAB, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_F, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_Z, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_X, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_C, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_V, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_SPC, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_LCTL, RGB_ORANGE2);
-        rgb_matrix_set_color(LED_LSFT, RGB_ORANGE2);
-    }
 
     // Fn selector mode RGB setup
     switch (get_highest_layer(layer_state)) { // special handling per layer
@@ -326,12 +289,6 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(LED_MINS, RGB_OFFBLUE);
         rgb_matrix_set_color(LED_EQL, RGB_OFFBLUE);
 
-        // Indicator for paddle game enabled in build
-        #ifdef GAME_ENABLE
-        rgb_matrix_set_color(LED_P, RGB_CHARTREUSE);
-        #else
-        rgb_matrix_set_color(LED_P, RGB_RED);
-        #endif // GAME_ENABLE
 
         // System NumLock warning indicator RGB setup
         #ifdef INVERT_NUMLOCK_INDICATOR 
@@ -443,17 +400,25 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
         break;
 
-        // MOUSEKEYS mode RGB
-    case _MOUSEKEY:
-        rgb_matrix_set_color(LED_UP, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_DOWN, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_LEFT, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_RIGHT, RGB_CHARTREUSE);
-        rgb_matrix_set_color(LED_RCTL, RGB_CYAN);
-        rgb_matrix_set_color(LED_RSFT, RGB_CYAN);
-        rgb_matrix_set_color(LED_END, RGB_CYAN);
-        rgb_matrix_set_color(LED_PGUP, RGB_OFFBLUE);
-        rgb_matrix_set_color(LED_PGDN, RGB_OFFBLUE);
+        // _GAMEMODE mode RGB
+    case _GAMEMODE:
+        rgb_matrix_set_color(LED_LWIN, RGB_RED); //light up Winkey red when disabled
+        rgb_matrix_set_color(LED_W, RGB_CHARTREUSE); //light up gaming keys with WSAD higlighted
+        rgb_matrix_set_color(LED_S, RGB_CHARTREUSE);
+        rgb_matrix_set_color(LED_A, RGB_CHARTREUSE);
+        rgb_matrix_set_color(LED_D, RGB_CHARTREUSE);
+        rgb_matrix_set_color(LED_Q, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_E, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_R, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_TAB, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_F, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_Z, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_X, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_C, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_V, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_SPC, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_LCTL, RGB_ORANGE2);
+        rgb_matrix_set_color(LED_LSFT, RGB_ORANGE2);
         break;
 
         // Colemak layer RGB

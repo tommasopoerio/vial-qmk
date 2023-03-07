@@ -23,9 +23,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // LAYERS -- Note: to avoid compile problems, make sure total layers matches DYNAMIC_KEYMAP_LAYER_COUNT defined in config.h (where _COLEMAK layer is defined)
 enum custom_user_layers {
     _BASE,
-    _FN1,
+    _GAMEMODE,
     _NUMPADMOUSE,
-    _MOUSEKEY
+    _FN1
 };
 
 #define KC_CAD LALT(LCTL(KC_DEL))
