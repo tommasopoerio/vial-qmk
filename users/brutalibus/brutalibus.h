@@ -60,7 +60,6 @@ enum custom_user_keycodes {
         TG_ESC,        // Toggle ESC double tap for _BASE layer
         TG_INS,        // Toggle location of INS
         TG_SPCMOD,     // Toggle disabling of modded-SPACE functions
-        TG_AUTOCR,     // Toggle AutoCorrect
         TG_ENGCAP,     // Toggle highlighting Non-English letters during CAPSLOCK on ISO boards
 
         YAHOO,         // yahoo.com
@@ -93,7 +92,6 @@ typedef union {
     bool     encoder_press_mute_or_media :1;
     bool     ins_on_shft_bkspc_or_del :1;
     bool     disable_space_mods :1;
-    bool     autocorrect :1;
     bool     rgb_english_caps :1;
   };
 } user_config_t;

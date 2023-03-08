@@ -1,5 +1,4 @@
 SRC += brutalibus.c
-SRC += autocorrect/autocorrection.c
 
 ifdef ENCODER_ENABLE
 	# include encoder related code when enabled

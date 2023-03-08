@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "custom_double_taps.h"
 
-#include "autocorrect/autocorrection.h"
-
 // RGB NIGHT MODE
 #ifdef RGB_MATRIX_ENABLE
 static bool rgb_nightmode = false;
@@ -104,7 +102,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
     if (!process_capsnum(keycode, record)) { return false; }
     if (!process_esc_to_base(keycode, record)) { return false; }
     if (!process_lsft_for_caps(keycode, record)) { return false; }
-    if (!process_autocorrection(keycode, record)) { return false; }
 
     // Key macros ...
     switch (keycode) {
@@ -170,12 +167,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
             } else {
                 send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"OFF"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
             }
-            send_string("9. AutoCorrect...................................... ");
-            if (user_config.autocorrect) {
-                send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"ON"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
-            } else {
-                send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"OFF"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
-            }
             send_string("0. CapsLock highlights extended alphas "SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_4)SS_TAP(X_KP_0))"ISO"SS_TAP(X_KP_MINUS)"only"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_4)SS_TAP(X_KP_1))"... ");
             if (user_config.rgb_english_caps) {
                 send_string(SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_1))"OFF"SS_LALT(SS_TAP(X_KP_0)SS_TAP(X_KP_0)SS_TAP(X_KP_9)SS_TAP(X_KP_3))"\n");
@@ -231,12 +222,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
     case TG_SPCMOD:  // Toggle forcing SHIFT&CTRL-SPACE to function like SPACE
         if (record->event.pressed) {
             user_config.disable_space_mods ^= 1; // Toggles the status
-            eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
-        }
-        break;
-    case TG_AUTOCR:  // Toggle AutoCorrect
-        if (record->event.pressed) {
-            user_config.autocorrect ^= 1; // Toggles the status
             eeconfig_update_user(user_config.raw); // Writes the new status to EEPROM
         }
         break;
@@ -624,7 +609,6 @@ void eeconfig_init_user(void) {
     user_config.esc_double_tap_to_baselyr     = true;
     user_config.ins_on_shft_bkspc_or_del      = true;
     user_config.disable_space_mods            = true;
-    user_config.autocorrect                   = false;
     user_config.rgb_english_caps              = true;
 
     eeconfig_update_user(user_config.raw);

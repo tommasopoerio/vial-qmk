@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_FN1] = LAYOUT(
         EE_CLR,  KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_VOLD, KC_VOLU, KC_PSCR, KC_SLCK, KC_PAUS,           KC_SLEP,
-        PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,TG_AUTOCR,TG_ENGCAP,RGB_TOD,RGB_TOI, _______,           RGB_TOG,
+        PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,_______,TG_ENGCAP,RGB_TOD,RGB_TOI, _______,           RGB_TOG,
         _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, YAHOO,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,                     KC_HOME,
         KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______, _______, _______,           KC_END,
         _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
@@ -341,11 +341,6 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(LED_8, RGB_GREEN);
         } else {
         rgb_matrix_set_color(LED_8, RGB_PURPLE);
-        }
-        if (user_config.autocorrect) {
-        rgb_matrix_set_color(LED_9, RGB_GREEN);
-        } else {
-        rgb_matrix_set_color(LED_9, RGB_PURPLE);
         }
         if (user_config.rgb_english_caps) {
         rgb_matrix_set_color(LED_0, RGB_GREEN);

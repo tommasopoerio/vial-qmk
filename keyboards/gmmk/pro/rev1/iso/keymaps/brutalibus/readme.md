@@ -1,12 +1,10 @@
 # [gourdo1's](mailto:gourdo1@outlook.com) GMMK Pro Keyboard Layouts
 
-These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://github.com/qmk/qmk_firmware/tree/master/keyboards/gmmk/pro/rev1/ansi/keymaps/jonavin) with many additions, fixes, a revamped keymap, persistent user customizations, updated layers, Pascal Getreuer's [autocorrect](https://getreuer.info/posts/keyboards/autocorrection/), Tomas Guinan's [paddle game](https://github.com/qmk/qmk_firmware/tree/master/keyboards/gmmk/pro/rev1/ansi/keymaps/paddlegame) and expanded RGB controls and effects.
+These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://github.com/qmk/qmk_firmware/tree/master/keyboards/gmmk/pro/rev1/ansi/keymaps/jonavin) with many additions, fixes, a revamped keymap, persistent user customizations, updated layers and expanded RGB controls and effects.
 
 ![image](https://raw.githubusercontent.com/gourdo1/media/main/susuwatari.jpg)
 
-* Up-to-date [Changelog](https://github.com/gourdo1/gmmkpro-media/blob/main/changelog.md)
-* Latest [ANSI firmware](https://github.com/gourdo1/gmmkpro-media/raw/main/gmmk_pro_rev1_ansi_gourdo1.bin) download. (Flash with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases))
-* Latest [ISO firmware](https://github.com/gourdo1/gmmkpro-media/raw/main/gmmk_pro_rev1_iso_gourdo1.bin) download. (Flash with [QMK Toolbox](https://github.com/qmk/qmk_toolbox/releases))
+
 * Printable Keyboard [Cheatsheet](https://github.com/gourdo1/gmmkpro-media/raw/main/GMMK_Pro_Cheatsheet.pdf)
 
 ## Features
@@ -16,7 +14,6 @@ These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://g
 * Support for both [ANSI](https://keebnews.com/ansi-vs-iso/) and [ISO](https://keebnews.com/ansi-vs-iso/) keyboard layouts.
 * Quick & Easy Customization: Open a text editor and hit [FN]` (tilde on ANSI; the key left of '1' on ISO layouts) to view toggle-able settings.
 * [VIA](https://www.caniusevia.com/) support enabled.
-* AutoCorrection:  Pascal Getreuer's AutoCorrect code incorporated with 400 word dictionary on words > 4 characters.
 * Most [default Glorious shortcuts](https://cdn.shopify.com/s/files/1/0549/2681/files/GMMK_Pro_User_Guide.pdf) enabled
 * [N-key Rollover](https://en.wikipedia.org/wiki/Rollover_\(keyboard\)#n-key_rollover) (NKRO) -- toggled with [FN]R
 * 1000Hz polling rate with 5ms debounce time for quick response in games.
@@ -51,7 +48,6 @@ These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://g
     6. Encoder button - Default mutes volume; alternate plays/pauses media
     7. Insert function - Toggle between SHIFT-BKSPC and SHIFT-DEL
     8. Modded-Space override - Use standard Space in place of modded-Space functions
-    9. AutoCorrect - Internal (English) AutoCorrect; default is enabled
     0. (ISO layouts only) CapsLock highlights extended alpha keys
 
 ### Numpad + Mouse Keys (Capslock key)
