@@ -136,18 +136,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______, _______, _______,           KC_END,
         _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
         _______, TG(_GAMEMODE), _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
-    ),
+    )
 
-    #ifdef COLEMAK_LAYER_ENABLE
-    [_COLEMAK] = LAYOUT(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,          _______,
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  _______,          _______,
-        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_LBRC, KC_RBRC,                   KC_PGUP,
-        _______, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT, KC_NUHS, KC_ENT,           KC_PGDN,
-        _______, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
-        _______, _______, _______,                            KC_SPC,                             KC_RALT, _______, KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
-    ),
-    #endif // COLEMAK_LAYER_ENABLE
 };
 
 #if defined(ENCODER_ENABLE) && !defined(ENCODER_DEFAULTACTIONS_ENABLE) // Encoder Functionality when not using userspace defaults
@@ -414,18 +404,6 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(LED_SPC, RGB_ORANGE2);
         rgb_matrix_set_color(LED_LCTL, RGB_ORANGE2);
         rgb_matrix_set_color(LED_LSFT, RGB_ORANGE2);
-        break;
-
-        // Colemak layer RGB
-        #ifdef COLEMAK_LAYER_ENABLE
-    case _COLEMAK:
-        for (uint8_t i = 0; i < ARRAYSIZE(LED_SIDE_RIGHT); i++) {
-            rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
-            rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_MAGENTA);
-        }
-        break;
-        #endif
-
         break;
     }
 }
