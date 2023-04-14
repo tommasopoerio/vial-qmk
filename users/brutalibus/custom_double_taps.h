@@ -11,7 +11,7 @@ static bool process_capsnum(uint16_t keycode, keyrecord_t * record) {
     static uint16_t tap_timer = 0;
 
     if (keycode == CAPSNUM) {
-        if (user_config.double_tap_shift_for_capslock) {
+        if (user_config.double_tap_shift_for_capslock && !IS_LAYER_ON(_GAMEMODE) ) {
             // Act as TT(_NUMPADMOUSE)
             if (record -> event.pressed) { // CAPSNUM key was pressed
                 // Check whether the key was recently tapped
@@ -76,7 +76,7 @@ static bool process_lsft_for_caps(uint16_t keycode, keyrecord_t * record) {
     static bool tapped = false;
     static uint16_t tap_timer = 0;
 
-    if (keycode == KC_LSFT) {
+    if (keycode == KC_LSFT && !IS_LAYER_ON(_GAMEMODE)) {
         if (user_config.double_tap_shift_for_capslock) {
           if (!keymap_config.no_gui) {
             if (record->event.pressed) {
