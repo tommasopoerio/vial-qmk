@@ -54,10 +54,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     }
 	
     void encoder_action_mediatrack(bool clockwise) {
-        if (clockwise)
+        if (clockwise){
             tap_code(KC_MNXT);
-        else
+        }
+        else{
             tap_code(KC_MPRV);
+        }
     }
 
     void encoder_action_navword(bool clockwise) {

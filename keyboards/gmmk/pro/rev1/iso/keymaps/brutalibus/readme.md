@@ -29,7 +29,6 @@ These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://g
 * Domain shortcuts: [FN]. for .com, [FN]O for outlook.com, [FN]Y for yahoo.com, [FN]H for hotmail.com, [FN]G for gmail.com.
 * [Bootloader mode](https://github.com/qmk/qmk_firmware/blob/master/docs/newbs_flashing.md) accessible via [FN]Backslash for ANSI and FN(key next to Left Shift) for ISO
 * PrtScrn, Scroll Lock, Pause/Break are top right on the keyboard: [FN]F11, [FN]F12, [FN]F13
-* [Colemak](https://colemak.com/) key layout support (Accessible via Left Shift + turn Encoder clockwise until side LEDs light up purple)
 * Double tap ESC any time to revert to base layer.
 * RGB backlight effects expanded to include framebuffer effects and reactive keypress modes.
 * RGB backlight now remembers last color & effect settings after power down.
@@ -116,5 +115,3 @@ These Windows-centric layouts are based on Jonavin's GMMK Pro [layout](https://g
 ### Layer 2 (Numpad)
 ![image](https://raw.githubusercontent.com/gourdo1/gmmkpro-media/main/numpad.png)
 
-### COLEMAK layer
-![image](https://user-images.githubusercontent.com/71780717/131235050-980d2f54-2d23-4ae8-a83f-9fcdbe60d6cb.png)
