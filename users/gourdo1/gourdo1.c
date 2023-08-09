@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "autocorrect/autocorrection.h"
 
+
 // RGB NIGHT MODE
 #ifdef RGB_MATRIX_ENABLE
 static bool rgb_nightmode = false;

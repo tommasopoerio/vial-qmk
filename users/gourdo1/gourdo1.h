@@ -39,6 +39,9 @@ enum custom_user_layers {
 #define SWAP_L SGUI(KC_LEFT)                 // Swap application to left display
 #define SWAP_R SGUI(KC_RGHT)                 // Swap application to right display
 
+// DEFINE MACROS
+#define ARRAYSIZE(arr) sizeof(arr) / sizeof(arr[0])
+
 // KEYCODES
 enum custom_user_keycodes {
     KC_00 = SAFE_RANGE,

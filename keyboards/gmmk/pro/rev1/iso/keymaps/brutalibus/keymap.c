@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  LEFTOFENC,        ENCFUNC,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          BELOWENC,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,                   KC_PGUP,
-        KC_CAPSLOCK, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_NUHS, KC_ENT,           KC_PGDN,
+        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, KC_NUHS, KC_ENT,           KC_PGDN,
         KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
         KC_LCTL, TD(0), KC_LALT,                            KC_SPC,                             KC_RALT, _______,KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
@@ -130,11 +130,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
     [_FN1] = LAYOUT(
-        EE_CLR,  KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_VOLD, KC_VOLU, KC_PSCR, KC_SLCK, KC_PAUS,           KC_SLEP,
+        EE_CLR,  KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_VOLD, KC_VOLU, KC_PSCR, KC_SCRL, KC_PAUS,           KC_SLEP,
         PRNCONF, TG_CAPS, TG_PAD,  TG_ESC,  TG_DEL,  TG_TDCAP,TG_ENC,  TG_INS,TG_SPCMOD,_______,TG_ENGCAP,RGB_TOD,RGB_TOI, _______,           RGB_TOG,
         _______, RGB_SAD, RGB_VAI, RGB_SAI, NK_TOGG, _______, YAHOO,   _______, _______, OUTLOOK, KC_PAUS, SWAP_L,  SWAP_R,                     KC_HOME,
         KC_CAPS, RGB_HUD, RGB_VAD, RGB_HUI, _______, GMAIL,   HOTMAIL, _______, _______, LOCKPC,  _______, _______, _______, _______,           KC_END,
-        _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NLCK, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
+        _______, QK_BOOT, RGB_NITE,_______, _______, _______, QK_BOOT, KC_NUM, _______, _______, DOTCOM,  KC_CAD,           _______, RGB_MOD,  _______,
         _______, TG(_GAMEMODE), _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
     )
 
@@ -183,11 +183,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 
 // Capslock, Scroll lock and Numlock indicator on Left side lights.
-void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (get_rgb_nightmode()) rgb_matrix_set_color_all(RGB_OFF);
 
+    led_t led_state = host_keyboard_led_state();
+
     // Scroll Lock RGB setup
-    if (IS_HOST_LED_ON(USB_LED_SCROLL_LOCK)) {
+    if (led_state.scroll_lock) {
         rgb_matrix_set_color(LED_L3, RGB_RED);
         rgb_matrix_set_color(LED_L4, RGB_RED);
         rgb_matrix_set_color(LED_TAB, RGB_RED);
@@ -216,7 +218,7 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 */
 
     // CapsLock RGB setup
-    if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
+    if (led_state.caps_lock) {
         if (user_config.rgb_hilite_caps) {
             if (user_config.rgb_english_caps) {
                 for (uint8_t i = 0; i < ARRAYSIZE(LED_LIST_LETTERS); i++) {
@@ -282,11 +284,11 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
         // System NumLock warning indicator RGB setup
         #ifdef INVERT_NUMLOCK_INDICATOR 
-        if (!IS_HOST_LED_ON(USB_LED_NUM_LOCK)) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
+        if (!led_state.num_lock) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #else
-        if (IS_HOST_LED_ON(USB_LED_NUM_LOCK)) { // Normal, on if NUM lock is ON
+        if (led_state.num_lock) { // Normal, on if NUM lock is ON
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #endif // INVERT_NUMLOCK_INDICATOR
@@ -354,11 +356,11 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         // Numpad & Mouse Keys overlay RGB
     case _NUMPADMOUSE:
         #ifdef INVERT_NUMLOCK_INDICATOR 
-        if (!IS_HOST_LED_ON(USB_LED_NUM_LOCK)) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
+        if (!led_state.num_lock) { // on if NUM lock is OFF to bring attention to overlay numpad not functional when enabled
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #else
-        if (IS_HOST_LED_ON(USB_LED_NUM_LOCK)) { // Normal, on if NUM lock is ON
+        if (led_state.num_lock) { // Normal, on if NUM lock is ON
             rgb_matrix_set_color(LED_N, RGB_ORANGE2);
         }
         #endif // INVERT_NUMLOCK_INDICATOR
@@ -406,6 +408,8 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         rgb_matrix_set_color(LED_LSFT, RGB_ORANGE2);
         break;
     }
+return false;
+
 }
 #endif
 
