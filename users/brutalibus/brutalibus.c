@@ -406,6 +406,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
         break;
 
         // Treat Control & Shift-Space as if regular Space
+    /* TODO: TEMP DISABLE FOR APEX GAME PROBLEM
     case KC_SPC:
         if (user_config.disable_space_mods) {
             // Initialize a boolean variable that keeps track of the space key status: registered or not?
@@ -446,7 +447,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
             }
         }
         break;
-
+ */
     // INS as SHIFT-modified BackSpace key
     case KC_BSPC: {
         if (user_config.ins_on_shft_bkspc_or_del) {
@@ -603,7 +604,7 @@ void eeconfig_init_user(void) {
     user_config.raw                           = 0;
     user_config.rgb_hilite_caps               = true;
     user_config.rgb_hilite_numpad             = true;
-    user_config.double_tap_shift_for_capslock = true;
+    user_config.double_tap_shift_for_capslock = false;
     user_config.del_right_home_top            = true;
     user_config.encoder_press_mute_or_media   = true;
     user_config.esc_double_tap_to_baselyr     = true;

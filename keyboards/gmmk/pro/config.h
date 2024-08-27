@@ -85,4 +85,4 @@
 #define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 
 /* Set debounce time to 8ms to prevent chatter */
-// #define DEBOUNCE 8
+#define DEBOUNCE 8

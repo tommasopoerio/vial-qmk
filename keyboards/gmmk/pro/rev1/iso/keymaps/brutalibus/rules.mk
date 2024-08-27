@@ -10,9 +10,9 @@ VIALRGB_ENABLE=yes
 VIA_ENABLE = yes
 TAP_DANCE_ENABLE = yes
 BOOTMAGIC_ENABLE = yes         # Enable Bootmagic Lite
-CAPS_WORD_ENABLE = yes         # Enable built-in Caps Word functionality
+CAPS_WORD_ENABLE = no         # Enable built-in Caps Word functionality
 
-TD_LSFT_CAPSLOCK_ENABLE = yes
+TD_LSFT_CAPSLOCK_ENABLE = no
 IDLE_TIMEOUT_ENABLE = yes
 STARTUP_NUMLOCK_ON = yes
 ENCODER_DEFAULTACTIONS_ENABLE = yes
